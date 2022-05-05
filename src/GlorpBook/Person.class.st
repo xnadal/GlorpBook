@@ -9,6 +9,24 @@ login := Login new
   databaseName: TheDatabaseName;
   password: '';
   yourself.
+
+PharoDatabaseAccessor DefaultDriver: GlorpSQLite3Driver. 
+
+login := Login new
+  database: SQLite3Platform new;
+  host: SmalltalkImage current imageDirectory fullName;
+  databaseName: 'glorpbook.db';
+  password: '';
+  yourself.
+
+accessor := DatabaseAccessor forLogin: login.
+accessor login.
+
+login secure: true.
+
+
+accessor isLoggedIn.
+
 "
 Class {
 	#name : #Person,
